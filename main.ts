@@ -6,14 +6,18 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-// The story: exactly six words. A whole life in one kept voicemail —
-// she erased everything of him except his voice.
-const STORY = "Kept his voicemail. Deleted everything else.";
+// The story: exactly six words, 39 characters. Three life events in
+// one line — buried him Tuesday, married again by Friday. The second
+// sentence flips the first one completely, and the three-day gap is
+// what makes the turn land.
+const STORY = "She buried him Tuesday. Married Friday.";
 
 // Gate guard: the sealed scorer only accepts UTF-8 text of 1-60
 // characters, not whitespace-only, and the judge brief ranks any line
 // that is not exactly six words below every six-word story. Fail loudly
 // (non-zero exit, no file written) instead of shipping a bad entry.
+// The Tuesday/Friday turn only works at exactly six words — a word
+// more or less would break the three-day-gap punch.
 const words = STORY.trim().split(/\s+/).filter(Boolean);
 if (words.length !== 6) {
   console.error(`story must be exactly 6 words, got ${words.length}: ${STORY}`);
