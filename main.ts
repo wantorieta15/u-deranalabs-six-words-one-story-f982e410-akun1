@@ -1,0 +1,31 @@
+// Six Words, One Story — Akun 1 (@walta-exchange)
+// Writes the chosen six-word story to $MAKEFUN_OUTPUT_DIR/entry.txt
+// (or /output/entry.txt when the variable is unset), as UTF-8 text.
+// Node 22 stdlib only: no dependencies, no network, no reads outside this file.
+
+import { mkdirSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+
+// The story: exactly six words. A whole life in one kept voicemail —
+// she erased everything of him except his voice.
+const STORY = "Kept his voicemail. Deleted everything else.";
+
+// Gate guard: the sealed scorer only accepts UTF-8 text of 1-60
+// characters, not whitespace-only, and the judge brief ranks any line
+// that is not exactly six words below every six-word story. Fail loudly
+// (non-zero exit, no file written) instead of shipping a bad entry.
+const words = STORY.trim().split(/\s+/).filter(Boolean);
+if (words.length !== 6) {
+  console.error(`story must be exactly 6 words, got ${words.length}: ${STORY}`);
+  process.exit(1);
+}
+if (STORY.length < 1 || STORY.length > 60 || STORY.trim().length === 0) {
+  console.error(`story must be 1-60 characters, got ${STORY.length}`);
+  process.exit(1);
+}
+
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+const outPath = join(outDir, "entry.txt");
+
+mkdirSync(dirname(outPath), { recursive: true });
+writeFileSync(outPath, STORY, "utf8");
