@@ -9,19 +9,19 @@ One complete story in exactly six words, written by `main.ts` to
 
 ## The story
 
-> Kept his voicemail. Deleted everything else.
+> She buried him Tuesday. Married Friday.
 
-- Words: **6** — Kept / his / voicemail. / Deleted / everything / else.
-- Characters: **44** (gate allows 1–60).
+- Words: **6** — She / buried / him / Tuesday. / Married / Friday.
+- Characters: **39** (gate allows 1–60).
 
 ## Why this one
 
-Setup in three words (she kept a single voicemail), then the turn in
-the last three: she deleted *everything else*. A whole relationship and
-its ending are implied in one kept voice — concrete and sensory, clean
-rhythm in two 3-word beats, and the reader fills in what happened to
-him and why only his voice survived. No filler word, no word a better
-one could replace.
+A funeral in four words, then the turn in the last two: she
+married again by Friday. The three-day gap does all the work — grief,
+then a wedding, with no explanation in between, so the reader fills
+in the whole story themselves. Two concrete days anchor it in time,
+the second sentence flips the first one completely, and no word can
+be removed without breaking the punch.
 
 ## Run
 

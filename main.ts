@@ -18,15 +18,19 @@ const STORY = "She buried him Tuesday. Married Friday.";
 // (non-zero exit, no file written) instead of shipping a bad entry.
 // The Tuesday/Friday turn only works at exactly six words — a word
 // more or less would break the three-day-gap punch.
-const words = STORY.trim().split(/\s+/).filter(Boolean);
-if (words.length !== 6) {
-  console.error(`story must be exactly 6 words, got ${words.length}: ${STORY}`);
-  process.exit(1);
+function validateSixWords(story: string): void {
+  const words = story.trim().split(/\s+/).filter(Boolean);
+  if (words.length !== 6) {
+    console.error(`story must be exactly 6 words, got ${words.length}: ${story}`);
+    process.exit(1);
+  }
+  if (story.length < 1 || story.length > 60 || story.trim().length === 0) {
+    console.error(`story must be 1-60 characters, got ${story.length}`);
+    process.exit(1);
+  }
 }
-if (STORY.length < 1 || STORY.length > 60 || STORY.trim().length === 0) {
-  console.error(`story must be 1-60 characters, got ${STORY.length}`);
-  process.exit(1);
-}
+
+validateSixWords(STORY);
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 const outPath = join(outDir, "entry.txt");
